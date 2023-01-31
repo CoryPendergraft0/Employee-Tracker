@@ -89,3 +89,13 @@ const addRole = async () => {
     
     insert('role', answers);
 };
+
+const addDepartment = async () => {
+    const answers = await prompt([{
+        name: 'name',
+        message: 'What is the name of this department?'
+    }
+    ])
+    
+    insert('department', answers);
+};
