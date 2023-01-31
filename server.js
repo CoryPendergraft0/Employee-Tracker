@@ -60,3 +60,32 @@ const addEmployee = async () => {
    
     insert('employee', answers);
 };
+
+const addRole = async () => {
+    const [departmentData] = await selectAll('department');
+    
+    const departments = departmentData.map(department => {
+        return {
+            name: department.name,
+            value: department.id
+        }
+    });
+    const answers = await prompt([
+        {
+            name: 'title',
+            message: 'What is the role`s title?'
+        },
+        {
+            name: 'salary',
+            message: 'What is the salary for the role?'
+        },
+        {
+            type: 'rawlist',
+            name: 'department_id',
+            message: 'What department does this role belong to?',
+            choices: departments,
+        },
+    ])
+    
+    insert('role', answers);
+};
