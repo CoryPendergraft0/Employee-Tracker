@@ -135,3 +135,23 @@ const choicesOption = async (type) => {
         
     }
 };
+
+const init = async () => {
+    const answers = await prompt({
+        type: 'rawlist',
+        message: 'Please choose one of the following categories to interact with',
+        choices: [
+            'View All Employees',
+            'View All Departments',
+            'View All Roles',
+            'Add An Employee',
+            'Add A Department',
+            'Add A Role',
+            
+        ],
+        name: 'type',
+    })
+    choicesOption(answers.type)
+}
+
+init();
