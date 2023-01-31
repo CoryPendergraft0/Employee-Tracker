@@ -99,3 +99,39 @@ const addDepartment = async () => {
     
     insert('department', answers);
 };
+
+const choicesOption = async (type) => {
+    switch (type) {
+        case 'View All Employees': {
+            const [data] = await selectAll('employee');
+            console.table(data);
+            init();
+            break;
+        }
+        case 'View All Departments': {
+            const [data] = await selectAll('department');
+            console.table(data);
+            init();
+            break;
+        }
+        case 'View All Roles': {
+            const [data] = await selectAll('role');
+            console.table(data);
+            init();
+            break;
+        }
+        case 'Add Employee': {
+            await addEmployee();
+            break;
+        }
+        case 'Add Department': {
+            await addDepartment();
+            break;
+        }
+        case 'Add Role': {
+            await addRole();
+            break;
+        }
+        
+    }
+};
